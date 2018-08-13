@@ -4,7 +4,7 @@ class CreateAssessments < ActiveRecord::Migration[5.0]
       t.string :name
       t.boolean :active
       t.integer :admin_id
-
+      t.string  :assessment_type
       t.timestamps
     end
   end
