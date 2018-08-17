@@ -1,8 +1,7 @@
 <div class="nested-fields">
 	<div class="form-group">
-    <%= task.label :Answer %></br>
-    <%= task.text_field :title, class: 'form-control' %>
-   <%= link_to_remove_association "remove answer", task %>
-   <%= link_to_add_association 'Add Answer', task, :answers %>
+    <%= f.label :Answer %></br>
+    <%= f.text_field :title, class: 'form-control' %>
+   <%= link_to_remove_association "remove answer", f %>
   	</div>
 </div>

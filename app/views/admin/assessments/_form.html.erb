@@ -14,10 +14,10 @@
 						</div>
 					</div>
 
-					<%= task.fields_for :answers do |task| %>
-						<%= render 'answer_fields', :task => task %>
+					<%= task.fields_for :answers do |task1| %>
+						<%= render 'answer_fields', :f => task1 %>
 						<div class="links">
-							<%= link_to_add_association 'Add Answer', task, :answers %>
+							<%= link_to_add_association 'add answer', task, :answers %>
 						</div>
 					<% end %>
 				<% end %>
