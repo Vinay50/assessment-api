@@ -2,6 +2,6 @@
 	<div class="form-group">
     <%= f.label :Answer %></br>
     <%= f.text_field :title, class: 'form-control' %>
-   <%= link_to_remove_association "remove answer", f %>
+   <%= link_to_remove_association raw('<i class="fa fa-trash"></i> Remove answer'), f,:class => 'btn btn-sm btn-default' %>
   	</div>
 </div>

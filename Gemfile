@@ -1,9 +1,7 @@
 # frozen_string_literal: true
-
 # rubocop:disable LineLength
 source 'https://rubygems.org'
 ruby '2.5.0'
-
 # Enforce git to transmitted via https.
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
@@ -13,6 +11,7 @@ end
 gem 'bootstrap-sass'
 gem 'cocoon'
 gem 'coffee-rails', '~> 4.2'
+gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'puma', '~> 3.0'
@@ -27,6 +26,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'Selenium'
   gem 'byebug', platform: :mri
   gem 'capybara'
   gem 'cucumber-rails', require: false
@@ -35,7 +35,6 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'rspec-rails', '~> 2.0'
   gem 'rubocop'
-  gem 'Selenium'
   gem 'selenium-client'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'

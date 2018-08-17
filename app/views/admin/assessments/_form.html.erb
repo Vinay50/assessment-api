@@ -1,23 +1,23 @@
 <div class="row">
-	<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 admin-layout admin-layout-backgound">
-	  <h3 class="text-center">Add Assessment</h3>
+	<div class="col-md-6 col-md-offset-3 admin-layout admin-layout-backgound">
+	  <h4 class="text-center">New Assessment</h4>
 		<%=form_for (["admin",@assessment]) do |f|%>
 			 <div class="form-group">
-		       <%= f.label :name %>
+		       <%= f.label :Name %>
 		       <%= f.text_field :name, class: 'form-control' %>
 		    </div>
 				<%= f.fields_for :questions do |task| %>
 					<div class="form-group">
 						<%= render 'question_fields', :f => task %>
 						<div class="links">
-							<%= link_to_add_association 'add question', f, :questions %>
+						<%= link_to_add_association raw('<i class="fa fa-plus"></i> Add a question'), f, :questions, :class => 'btn btn-sm btn-default' %>
 						</div>
 					</div>
 
 					<%= task.fields_for :answers do |task1| %>
 						<%= render 'answer_fields', :f => task1 %>
 						<div class="links">
-							<%= link_to_add_association 'add answer', task, :answers %>
+							<%= link_to_add_association raw('<i class="fa fa-plus"></i> Add answer'), task, :answers, :class => 'btn btn-sm btn-default' %>
 						</div>
 					<% end %>
 				<% end %>
