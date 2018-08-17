@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,44 +12,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180813072033) do
-
-  create_table "answers", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "order"
-    t.boolean  "active"
-    t.boolean  "correct"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "weight"
+ActiveRecord::Schema.define(version: 20_180_813_160_048) do
+  create_table 'answers', force: :cascade do |t|
+    t.string   'title'
+    t.integer  'order'
+    t.boolean  'active'
+    t.boolean  'correct'
+    t.datetime 'created_at',  null: false
+    t.datetime 'updated_at',  null: false
+    t.integer  'weight'
+    t.integer  'question_id'
   end
 
-  create_table "assessments", force: :cascade do |t|
-    t.string   "name"
-    t.boolean  "active"
-    t.integer  "admin_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "assessment_type"
+  create_table 'assessments', force: :cascade do |t|
+    t.string   'name'
+    t.boolean  'active'
+    t.integer  'admin_id'
+    t.datetime 'created_at',      null: false
+    t.datetime 'updated_at',      null: false
+    t.string   'assessment_type'
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.string   "title"
-    t.string   "subtitle"
-    t.integer  "order"
-    t.boolean  "active"
-    t.integer  "assessment_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+  create_table 'questions', force: :cascade do |t|
+    t.string   'title'
+    t.string   'subtitle'
+    t.integer  'order'
+    t.boolean  'active'
+    t.integer  'assessment_id'
+    t.datetime 'created_at',    null: false
+    t.datetime 'updated_at',    null: false
   end
 
-  create_table "results", force: :cascade do |t|
-    t.integer  "no_correct"
-    t.integer  "no_incorrect"
-    t.integer  "question_id"
-    t.integer  "anwser_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+  create_table 'results', force: :cascade do |t|
+    t.integer  'no_correct'
+    t.integer  'no_incorrect'
+    t.integer  'question_id'
+    t.integer  'anwser_id'
+    t.datetime 'created_at',   null: false
+    t.datetime 'updated_at',   null: false
   end
-
 end

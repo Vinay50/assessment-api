@@ -1,83 +1,30 @@
-<ul class="nav nav-tabs text-center" role="tablist">
-  <li role="presentation" class="active"><a href="#destination_details" aria-controls="home" role="tab" data-toggle="tab">Tour details</a></li>
-  <li role="presentation"><a href="#add_images" aria-controls="messages" role="tab" data-toggle="tab">Add Images</a></li>
-  <li role="presentation" class=""><a href="#key_details" aria-controls="home" role="tab" data-toggle="tab">Key Details</a></li>
-</ul>
-<div class="container">
-	<%= simple_form_for @tour do |f| %>
-		<% if @tour.errors.any? %>
-			<div id="error_explanation">
-				<h2><%= pluralize(@tour.errors.count, "error") %> prohibited this tour from being saved:</h2>
-				<ul>
-				<% @tour.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
-				<% end %>
-				</ul>
-			</div>
-    <% end %>
-  <div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="destination_details">
-			<div class="col-md-5 col-md-offset-3 col-sm-4 col-sm-offset-3 col-xs-12">
-						<div class="form-group">
-							<label for="destinationname" class="control-label ">Tour URL<sup><span class="glyphicon glyphicon-asterisk red-star" aria-hidden="true"></span></sup>:</label>
-							<%= f.input :name , label: false, input_html: { class: 'form-control' }  %>
-						</div>
-
-						<div class="form-group">
-							<label for="destinationname" class="control-label ">Tour Name<sup><span class="glyphicon glyphicon-asterisk red-star" aria-hidden="true"></span></sup>:</label>
-							<%= f.input :tour_name , label: false, input_html: { class: 'form-control' }  %>
-						</div>
-
-						<div class="form-group">
-							<%= f.label :select_city %>
-							<%= f.collection_select :destination_id, Destination.all.collect, :id, :name, {}, {class: "form-control"}%>
-						</div>
-
-						<div class="form-group">
-							<%= f.label :select_monument %>
-						<%= select_tag("monument_ids[]", options_for_select(Monument.all.collect { |cat| [cat.name, cat.id] }, @tour.monuments.collect { |cat| cat.id}), {:multiple=>true, :size=>6, :class => "form-control", :id => "dropdown" })%>
-						</div>
-
-						<div class="form-group">
-							<%= f.label :tag_list, 'Tags (separated with comas)' %>
-							<%= f.text_field :tag_list, value: f.object.tag_list.to_s , class: 'form-control' %>
-						</div>
-					</div>
-		</div> <hr>
-
-		<div class="tab-pane" id="add_images">
-					<div class="col-md-5 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-						<%= f.simple_fields_for :images do |image| %>
-							<%= render 'image_fields', :f => image %>
-						<% end %>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 admin-layout admin-layout-backgound">
+	  <h3 class="text-center">Add Assessment</h3>
+		<%=form_for (["admin",@assessment]) do |f|%>
+			 <div class="form-group">
+		       <%= f.label :name %>
+		       <%= f.text_field :name, class: 'form-control' %>
+		    </div>
+				<%= f.fields_for :questions do |task| %>
+					<div class="form-group">
+						<%= render 'question_fields', :f => task %>
 						<div class="links">
-						<%= link_to_add_association 'add image', f, :images %>
+							<%= link_to_add_association 'add question', f, :questions %>
 						</div>
 					</div>
-		</div>
 
-		<div class="tab-pane" id="key_details">
-			<div class="col-md-5 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-				<%= f.simple_fields_for :key_details do |task| %>
-					<%= render 'key_detail_fields', :f => task %>
+					<%= task.fields_for :answers do |task| %>
+						<%= render 'answer_fields', :task => task %>
+						<div class="links">
+							<%= link_to_add_association 'Add Answer', task, :answers %>
+						</div>
+					<% end %>
 				<% end %>
-				<div class="links">
-					<%= link_to_add_association 'add key detail', f, :key_details %>
+				<div class="form-group">
+		      <%= f.submit  class: "btn btn-primary form-control" %>
 				</div>
-			</div>
-		</div>
-
-  </div>
-	<div class="form-group">
-		<div class="col-md-5 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-			<%= hidden_field_tag :user_id, current_user.id %>
-			<%= f.submit  class: "btn btn-info form-control" %>
+		<% end %>
 	</div>
-	</div>
-<% end %>
 </div>
 
-<script type="text/javascript">
-  $( "#dropdown" ).select2({
-});
-</script>
