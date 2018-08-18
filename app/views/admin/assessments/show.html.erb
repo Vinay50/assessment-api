@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="col-md-8 col-md-offset-2 admin-layout">
+    <h4 class="text-center"> Your Assessment</h4>
+    <%= link_to 'Edit assessmet', edit_admin_assessment_path(@assessment) %>
+    <div class="panel panel-default nested-fields answer-container form-inputs">
+    	<div class="panel-body">
+        <strong>Name:</strong>
+        <%= @assessment.name %>
+      </div>
+    </div>
+
+    <% @assessment.questions.each do |question|%>
+      <div class="panel panel-default nested-fields question-container">
+        <div class="panel-body">
+          <ul>
+            <li><strong>Question:</strong> <%= question.title %></li>
+              <% question.answers.each do |answer| %>
+                <li> <strong>Answer:</strong>  <%= answer.title %>
+               <% end %>
+            </li>
+            </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -3,6 +3,8 @@
 module Admin
   # class has methods to create/update/detelete the assessment
   class AssessmentsController < ApplicationController
+    before_action :find_assessment, only: %i[edit update show destory]
+
     def index
       @assessments = Assessment.all
       render(json: @assessments)
@@ -27,14 +29,26 @@ module Admin
 
     def edit; end
 
-    def update; end
+    def update
+      if @assessment.update(assessment_params)
+        flash[:notice] = "Successfully updated."
+      else
+        flash[:error] = "could not updated."
+      end
+    end
+
+    def show; end
 
     def delete; end
 
     private
 
+    def find_assessment
+      @assessment = Assessment.find(params[:id])
+    end
+
     def assessment_params
-       params.require(:assessment).permit( :name,
+      params.require(:assessment).permit( :name,
       { questions_attributes: [:id, :title, :_destroy,
       { answers_attributes: [:id, :title, :_destroy] }] })
     end
