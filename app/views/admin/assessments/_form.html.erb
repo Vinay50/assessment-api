@@ -1,29 +1,26 @@
 <div class="row">
-	<div class="col-md-6 col-md-offset-3 admin-layout admin-layout-backgound">
+	<div class="col-md-8 col-md-offset-2 admin-layout">
 	  <h4 class="text-center">New Assessment</h4>
 		<%=form_for (["admin",@assessment]) do |f|%>
-			 <div class="form-group">
-		       <%= f.label :Name %>
-		       <%= f.text_field :name, class: 'form-control' %>
+		  <%= render  partial: 'shared/error_message' %>
+			<%#= f.error_notification %>
+			<div class="panel panel-default nested-fields answer-container form-inputs">
+    		<div class="panel-body">
+		       <div><%= f.label :Name %></div>
+		       <div><%= f.text_field :name, class: 'form-control' %></div>
 		    </div>
-				<%= f.fields_for :questions do |task| %>
-					<div class="form-group">
-						<%= render 'question_fields', :f => task %>
-						<div class="links">
-						<%= link_to_add_association raw('<i class="fa fa-plus"></i> Add a question'), f, :questions, :class => 'btn btn-sm btn-default' %>
-						</div>
-					</div>
+		  </div>
 
-					<%= task.fields_for :answers do |task1| %>
-						<%= render 'answer_fields', :f => task1 %>
-						<div class="links">
-							<%= link_to_add_association raw('<i class="fa fa-plus"></i> Add answer'), task, :answers, :class => 'btn btn-sm btn-default' %>
-						</div>
-					<% end %>
-				<% end %>
+			<%= f.fields_for :questions do |question| %>
 				<div class="form-group">
-		      <%= f.submit  class: "btn btn-primary form-control" %>
+					<%= render 'question_fields', :f => question %>
 				</div>
+			<% end %>
+			<p><%= link_to_add_association raw('<i class="fa fa-plus"></i> Add a question'), f, :questions, :class => 'btn btn-default' %></p>
+
+			<div class="form-group">
+	      <%= f.submit  class: "btn btn-primary form-control" %>
+			</div>
 		<% end %>
 	</div>
 </div>

@@ -1,0 +1,9 @@
+<% if @assessment.errors.any? %>
+  <div class="alert alert-warning">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <ul>
+      <%= @assessment.errors.full_errors.each do |msg| %>
+      <li>msg</li>
+     <% end %>
+    </ul>
+<% end %>

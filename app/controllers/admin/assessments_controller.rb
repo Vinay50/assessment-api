@@ -10,8 +10,10 @@ module Admin
 
     def new
       @assessment = Assessment.new
-      @q = @assessment.questions.build
-      @q.answers.build
+      1.times do
+        @question = @assessment.questions.build
+        2.times { @question.answers.build }
+      end
     end
 
     def create
