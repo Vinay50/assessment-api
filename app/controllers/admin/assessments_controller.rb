@@ -7,7 +7,7 @@ module Admin
 
     def index
       @assessments = Assessment.all
-      render(json: @assessments)
+      # render(json: @assessments)
     end
 
     def new
@@ -43,7 +43,16 @@ module Admin
 
     def show; end
 
-    def delete; end
+    def destroy
+      @assessment = Assessment.find(params[:id])
+      if @assessment.delete
+        flash[:notice] = "Successfully deleted."
+        redirect_to admin_assessments_path
+      else
+        flash[:notice] = "Could not delete. Please try later"
+        admin_assessments_path
+      end
+    end
 
     private
 

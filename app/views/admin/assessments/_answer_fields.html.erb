@@ -10,7 +10,7 @@
 			<%= f.label :weight %>
 			<%= f.text_field :order, class: 'form-control' %>
 		</div>
-		<div class="col-md-2 btn-margin no-padd">
+		<div class="col-md-3 btn-margin no-padd">
 			<%= f.hidden_field :correct, class: "quiz_questions_answers_correct" %></br>
 			<%= link_to_remove_association raw('<i class="fa fa-trash-o"></i>Remove Answer'), f, class: 'btn btn-default btn-sm', data: {toggle: "tooltip", placement: "left" } %>
 			<%= button_tag raw('<i class="fa fa-check fa-green success"></i>'), type: 'button',
