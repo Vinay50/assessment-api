@@ -22,8 +22,10 @@ module Admin
       @assessment = Assessment.new(assessment_params)
       if @assessment.save!
         flash[:notice] = "Assessment Successfully created"
+        redirect_to admin_assessment_path(@assessment)
       else
         flash[:error] = "Could not create Assessment.Please try after some time"
+        redirect_to action: "new"
       end
     end
 
@@ -32,8 +34,10 @@ module Admin
     def update
       if @assessment.update(assessment_params)
         flash[:notice] = "Successfully updated."
+        redirect_to admin_assessment_path(@assessment)
       else
         flash[:error] = "could not updated."
+        redirect_to action: "new"
       end
     end
 
@@ -49,8 +53,8 @@ module Admin
 
     def assessment_params
       params.require(:assessment).permit( :name,
-      { questions_attributes: [:id, :title, :_destroy,
-      { answers_attributes: [:id, :title, :_destroy] }] })
+      { questions_attributes: [:id, :title, :order, :active, :_destroy,
+      { answers_attributes: [:id, :title, :correct, :order, :active, :_destroy] }] })
     end
   end
 end

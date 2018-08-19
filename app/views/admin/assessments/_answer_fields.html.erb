@@ -2,6 +2,19 @@
 	<div class="panel-body">
 		<%= f.label :Answer %></br>
 		<%= f.text_field :title, class: 'form-control' %></br>
-		<%= link_to_remove_association raw('<i class="fa fa-trash-o"></i>Remove Answer'), f, class: 'btn btn-default btn-sm', data: {toggle: "tooltip", placement: "left" } %>
+		<div class="col-md-3 no-padd">
+			<%= f.label :order %>
+			<%= f.text_field :order, class: 'form-control' %>
+		</div>
+		<div class="col-md-3 no-padd">
+			<%= f.label :weight %>
+			<%= f.text_field :order, class: 'form-control' %>
+		</div>
+		<div class="col-md-2 btn-margin no-padd">
+			<%= f.hidden_field :correct, class: "quiz_questions_answers_correct" %></br>
+			<%= link_to_remove_association raw('<i class="fa fa-trash-o"></i>Remove Answer'), f, class: 'btn btn-default btn-sm', data: {toggle: "tooltip", placement: "left" } %>
+			<%= button_tag raw('<i class="fa fa-check fa-green success"></i>'), type: 'button',
+			class: 'btn btn-default btn-sm toggle-correct', data: {toggle: "tooltip", placement: "right", action: 'toggle-correct-answer' }, title:"Set as the correct answer"  %>
+	</div>
 	</div>
 </div>
