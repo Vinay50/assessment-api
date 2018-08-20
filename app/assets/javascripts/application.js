@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require cocoon
+//= require dataTables/jquery.dataTables
 //= require create_assessment
 //= require_tree .

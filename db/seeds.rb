@@ -9,3 +9,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 3.times { Assessment.create!(name: 'Ruby Test', active: true, admin_id: 1) }
+User.create(email: 'user@example.com', nickname: 'UOne', name: 'User One', password: "monkey67")

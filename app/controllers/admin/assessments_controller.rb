@@ -20,12 +20,12 @@ module Admin
 
     def create
       @assessment = Assessment.new(assessment_params)
-      if @assessment.save!
-        flash[:notice] = "Assessment Successfully created"
+      if @assessment.save
+        flash[:notice] = "Assessment Successfully created."
         redirect_to admin_assessment_path(@assessment)
       else
-        flash[:error] = "Could not create Assessment.Please try after some time"
-        redirect_to action: "new"
+       # flash[:notice] = "Could not create Assessment. Please try after some time"
+         render 'new'
       end
     end
 
@@ -33,7 +33,7 @@ module Admin
 
     def update
       if @assessment.update(assessment_params)
-        flash[:notice] = "Successfully updated."
+        flash[:success] = "Successfully updated."
         redirect_to admin_assessment_path(@assessment)
       else
         flash[:error] = "could not updated."
@@ -46,7 +46,7 @@ module Admin
     def destroy
       @assessment = Assessment.find(params[:id])
       if @assessment.delete
-        flash[:notice] = "Successfully deleted."
+        flash[:success] = "Successfully deleted."
         redirect_to admin_assessments_path
       else
         flash[:notice] = "Could not delete. Please try later"
