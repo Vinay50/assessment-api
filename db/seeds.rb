@@ -10,3 +10,4 @@
 
 3.times { Assessment.create!(name: 'Ruby Test', active: true, admin_id: 1) }
 User.create(email: 'user@example.com', nickname: 'UOne', name: 'User One', password: "monkey67")
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

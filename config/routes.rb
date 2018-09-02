@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   mount_devise_token_auth_for 'User', at: 'auth'
   namespace :api do
     namespace :v1 do
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
       resources :results
     end
   end
-  namespace :admin do
+  namespace :superadmin do
     resources :assessments
   end
 end

@@ -8,6 +8,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'activeadmin'
 gem 'bootstrap-sass'
 gem 'cocoon'
 gem 'coffee-rails', '~> 4.2'
@@ -30,17 +31,20 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'Selenium'
+  gem 'rubocop-rspec'
   gem 'byebug', platform: :mri
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'factory_bot'
-  gem 'factory_girl_rails', '~> 4.0'
-  gem 'rspec-rails', '~> 2.0'
-  gem 'rubocop'
+  gem "fake_stripe", "~> 0.1"
+  gem "factory_bot_rails", "~> 4.10"
+  gem "rspec-rails", "~> 3.7"
+  gem "simplecov", "~> 0.16", require: false
   gem 'selenium-client'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
+  gem 'ruby-prof'
 end
 
 group :development do
@@ -52,6 +56,7 @@ group :development do
   gem 'ruby-beautify'
   gem 'rubycritic', require: false
   gem 'rufo'
+  gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'

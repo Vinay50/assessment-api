@@ -2,7 +2,7 @@
 
 class Question < ApplicationRecord
   belongs_to :assessment
-  has_many :answers, inverse_of: :question
+  has_many :answers, inverse_of: :question, dependent: :destroy
   accepts_nested_attributes_for :answers, reject_if: :all_blank, allow_destroy: true
 
   validates :title, presence: true
