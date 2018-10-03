@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :assessments, defaults: { format: :json } do
-        resources :questions do
+        resources :questions, defaults: { format: :json } do
           resources :answers
         end
       end

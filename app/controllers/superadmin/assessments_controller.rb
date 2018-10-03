@@ -37,7 +37,7 @@ module Superadmin
         redirect_to superadmin_assessment_path(@assessment)
       else
         flash[:error] = "could not updated."
-        redirect_to action: "new"
+        render action: "new"
       end
     end
 

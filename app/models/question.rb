@@ -7,9 +7,9 @@ class Question < ApplicationRecord
 
   validates :title, presence: true
 
-  # validates :answers do
-  #   errors.add(:answers, "should have at least two answers defined") if self.answers.length < 2
-  #   errors.add(:answers, "") if answers.where(correct: true).length == 1
-  #   errors.add(':answers', "should have a correct answer") if answers.reject {|answer| !answer.correct? }.size < 1
-  # end
+  validate :answers do
+    # errors.add(:answers, "should have at least two answers defined") if self.answers.length < 2
+    # errors.add(:answers, "") if answers.where(correct: true).length == 1
+    # errors.add(:answers, "should have a correct answer") if answers.reject {|answer| !answer.correct? }.size < 1
+  end
 end
