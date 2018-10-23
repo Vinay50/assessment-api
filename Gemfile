@@ -41,12 +41,13 @@ group :development, :test do
   gem "fake_stripe", "~> 0.1"
   gem "factory_bot_rails", "~> 4.10"
   gem "rspec-rails", "~> 3.7"
-  gem "simplecov", "~> 0.16", require: false
+  gem 'simplecov', :require => false
   gem 'selenium-client'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
   gem 'ruby-prof'
+  gem 'faker', :require => false
 end
 
 group :development do
